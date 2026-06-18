@@ -1,14 +1,21 @@
+version: '3.8'
+
 services:
   db:
     image: mysql:8.0
     container_name: grandpneus_db
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes" 
-      MYSQL_DATABASE: user_management_db 
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: user_management_db
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql 
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   backend:
     build: ./backend
@@ -19,7 +26,8 @@ services:
       - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__DefaultConnection=Server=db;Database=user_management_db;User=root;Password=;
     depends_on:
-      - db 
+      db:
+        condition: service_healthy
 
   frontend:
     build: ./frontend
