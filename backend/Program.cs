@@ -96,6 +96,8 @@ using (var scope = app.Services.CreateScope())
     {
         var context = services.GetRequiredService<backend.Data.AppDbContext>();
         context.Database.Migrate();
+
+        backend.Data.DbSeeder.Seed(context);
     }
     catch (Exception ex)
     {
