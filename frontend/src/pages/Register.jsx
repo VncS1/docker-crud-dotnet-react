@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { api } from "../services/api";
+import toast from "react-hot-toast";
 
 export function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     setLoading(true);
 
     try {
@@ -23,12 +22,12 @@ export function Register() {
         password,
       });
 
-      alert("Conta criada com sucesso!");
+      toast.success("Conta criada com sucesso!");
       navigate("/login");
     } catch (err) {
       const errorMessage =
         err.response?.data?.message || "Erro ao criar conta. Tente novamente.";
-      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -40,12 +39,6 @@ export function Register() {
         <h2 className="mb-6 text-center text-2xl font-bold text-gray-800">
           Criar Conta
         </h2>
-
-        {error && (
-          <div className="mb-4 rounded bg-red-100 p-3 text-sm text-red-700">
-            {error}
-          </div>
-        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
