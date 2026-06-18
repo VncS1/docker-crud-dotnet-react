@@ -3046,11 +3046,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vinic\\Downloads\\GrandPneus_Test\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\vinic\\Downloads\\docker-crud-dotnet-react\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\vinic\\Downloads\\GrandPneus_Test\\backend\\backend.csproj",
+      "projectPath": "C:\\Users\\vinic\\Downloads\\docker-crud-dotnet-react\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\vinic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vinic\\Downloads\\GrandPneus_Test\\backend\\obj\\",
+      "outputPath": "C:\\Users\\vinic\\Downloads\\docker-crud-dotnet-react\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vinic\\AppData\\Roaming\\NuGet\\NuGet.Config"
