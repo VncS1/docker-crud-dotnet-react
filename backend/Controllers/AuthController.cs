@@ -16,7 +16,6 @@ namespace backend.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IConfiguration _configuration;
-
         public AuthController(AppDbContext context, IConfiguration configuration)
         {
             _context = context;
@@ -47,17 +46,13 @@ namespace backend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == dto.Email);
             if (user == null) return Unauthorized(new { message = "Credenciais inválidas." });
-
 
             bool isPasswordValid = BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash);
             if (!isPasswordValid) return Unauthorized(new { message = "Credenciais inválidas." });
 
-
             var token = GenerateJwtToken(user);
-
 
             var cookieOptions = new CookieOptions
             {
@@ -70,6 +65,14 @@ namespace backend.Controllers
             Response.Cookies.Append("jwt", token, cookieOptions);
 
             return Ok(new { message = "Login efetuado com sucesso!" });
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("jwt");
+            
+            return Ok(new { message = "Logout efetuado com sucesso!" });
         }
 
         private string GenerateJwtToken(User user)
