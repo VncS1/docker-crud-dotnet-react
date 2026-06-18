@@ -28,7 +28,7 @@ Graças à arquitetura baseada em containers, você **não precisa** ter o .NET,
 
 ### 1. Clonar o Repositório
 ```bash
-git clone <URL_DO_SEU_REPOSITORIO_AQUI>
+git clone https://github.com/VncS1/docker-crud-dotnet-react
 cd docker-crud-dotnet-react
 ```
 
