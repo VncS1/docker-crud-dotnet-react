@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Usuários (Docker & Fullstack)
+# Sistema de Gerenciamento de Usuários
 
 Este projeto é um desafio técnico Fullstack desenvolvido com **C# (.NET 8)** no backend e **React (Vite)** no frontend. Ele implementa um sistema seguro de autenticação (Cadastro e Login) e listagem de usuários, rodando de forma 100% conteinerizada e isolada.
 
